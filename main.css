@@ -1,0 +1,32 @@
+html,
+body {
+  margin: 0;
+  padding: 10px;
+  text-align: center;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+.grid {
+  margin: 0 auto;
+  border: 2px solid black;
+  width: 80vw;
+  max-width: 80vh;
+  height: 80vw;
+  max-height: 80vh;
+  display: grid;
+  grid: repeat(20, 1fr) / repeat(20, 1fr);
+}
+
+.snake {
+  background-color: grey;
+}
+
+.food {
+  background-color: orange;
+}
