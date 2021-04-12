@@ -54,19 +54,19 @@ currentSnake.forEach(index => squares[index].classList.add('snake'))
 function move() {
 
   if (
-    (currentSnake[0] + width  >= width * width  && direction === width)   || // bottom wall
-    (currentSnake[0] % width  === width - 1     && direction === 1)       || // right wall
-    (currentSnake[0] % width  === 0             && direction === -1)      || // left wall
-    (currentSnake[0] - width  < 0               && direction === -width)  || // top wall
+    (currentSnake[0] + width >= width * width && direction === width) || // bottom wall
+    (currentSnake[0] % width === width - 1 && direction === 1) || // right wall
+    (currentSnake[0] % width === 0 && direction === -1) || // left wall
+    (currentSnake[0] - width < 0 && direction === -width) || // top wall
     squares[currentSnake[0] + direction].classList.contains('snake')
-  ) 
-  return clearInterval(timerId)
+  )
+    return clearInterval(timerId)
 
   const tail = currentSnake.pop()
   squares[tail].classList.remove('snake')
 
   currentSnake.unshift(currentSnake[0] + direction)
-  
+
   if (currentSnake[0] === foodIndex) {
     currentSnake.push(currentSnake[0] + direction)
     squares[currentSnake[0]].classList.add('snake')
@@ -124,9 +124,7 @@ window.addEventListener("keydown", function (event) {
 function generateFood() {
   do {
     foodIndex = Math.floor(Math.random() * squares.length)
-  
+
   } while (squares[foodIndex].classList.contains('snake'));
   squares[foodIndex].classList.add('food')
 }
-
-generateFood()
