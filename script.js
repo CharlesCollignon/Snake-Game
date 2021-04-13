@@ -95,16 +95,16 @@ function move() {
 
 leftArrow.addEventListener("click", function () {
   direction = -1
-}, true)
+})
 rightArrow.addEventListener("click", function () {
   direction = 1
-}, true)
+})
 upArrow.addEventListener("click", function () {
   direction = -width
-}, true)
+})
 downArrow.addEventListener("click", function () {
   direction = +width
-}, true)
+})
 
 window.addEventListener("keydown", function (event) {
   if (event.defaultPrevented) {
