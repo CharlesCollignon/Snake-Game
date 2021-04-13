@@ -1,6 +1,12 @@
 const grid = document.querySelector('.grid')
 const startBtn = document.getElementById('start')
 const scoreDisplay = document.getElementById('score')
+const gameOver = document.querySelector('.game-over')
+
+const leftArrow = document.querySelector('.arrow-left')
+const rightArrow = document.querySelector('.arrow-right')
+const upArrow = document.querySelector('.arrow-up')
+const downArrow = document.querySelector('.arrow-left')
 
 let squares = []
 let currentSnake = [2, 1, 0]
@@ -31,6 +37,7 @@ createGrid()
 function startGame() {
   currentSnake.forEach(index => squares[index].classList.remove('snake'))
   squares[foodIndex].classList.remove('food')
+  gameOver.classList.remove("active")
   clearInterval(timerId)
   currentSnake = [2, 1, 0]
   currentSnake.forEach(index => squares[index].classList.add('snake'))
@@ -52,15 +59,17 @@ currentSnake.forEach(index => squares[index].classList.add('snake'))
 
 // ----------------------- MOVING STUFF --------------------------
 function move() {
-
   if (
     (currentSnake[0] + width >= width * width && direction === width) || // bottom wall
     (currentSnake[0] % width === width - 1 && direction === 1) || // right wall
     (currentSnake[0] % width === 0 && direction === -1) || // left wall
     (currentSnake[0] - width < 0 && direction === -width) || // top wall
     squares[currentSnake[0] + direction].classList.contains('snake')
-  )
+  ) {
+    console.log("yes")
+    gameOver.classList.add("active")
     return clearInterval(timerId)
+  }
 
   const tail = currentSnake.pop()
   squares[tail].classList.remove('snake')
@@ -80,8 +89,22 @@ function move() {
   }
 
   squares[currentSnake[0]].classList.add('snake')
+
+
 }
 
+leftArrow.addEventListener("click", function () {
+  direction = -1
+}, true)
+rightArrow.addEventListener("click", function () {
+  direction = 1
+}, true)
+upArrow.addEventListener("click", function () {
+  direction = -width
+}, true)
+downArrow.addEventListener("click", function () {
+  direction = +width
+}, true)
 
 window.addEventListener("keydown", function (event) {
   if (event.defaultPrevented) {
@@ -118,6 +141,8 @@ window.addEventListener("keydown", function (event) {
   // Annuler l'action par défaut pour éviter qu'elle ne soit traitée deux fois.
   event.preventDefault();
 }, true);
+
+
 
 
 // ------------------------ GENERATE FOOD ------------------------------

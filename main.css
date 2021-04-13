@@ -99,11 +99,28 @@ h2 {
   box-shadow: inset 20px 20px 60px #c7c09c,
             inset -20px -20px 60px #ffffd2;
 }
+.game-over {
+  display: none;
+}
+
+.game-over.active {
+  
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  font-size: 12vw;
+  color: white;
+}
 
 .made-by {
-  font-size: 1.2em;
-  display: block;
-}
+    font-size: 1em;
+    position: absolute;
+    width: 100%;
+    bottom: 2px;
+  }
 
 a {
   color: var(--primary-red);
@@ -117,21 +134,16 @@ a {
 
 @media (max-width: 600px) {
   #arrows-mobile {
-    font-size: 5em;
+    font-size: 6.5vh;
     font-weight: 900;
     color: var(--primary-red);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(3, 1fr);
     width: 60vw;
-    max-height: 60vw;
     margin: 20px auto 40px auto ;
     justify-content: center;
     align-items: center;
-  }
-
-  .made-by {
-    font-size: 1em;
   }
 
   #arrows-mobile .arrow-up {
