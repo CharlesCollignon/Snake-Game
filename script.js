@@ -6,7 +6,7 @@ const gameOver = document.querySelector('.game-over')
 const leftArrow = document.querySelector('.arrow-left')
 const rightArrow = document.querySelector('.arrow-right')
 const upArrow = document.querySelector('.arrow-up')
-const downArrow = document.querySelector('.arrow-left')
+const downArrow = document.querySelector('.arrow-down')
 
 let squares = []
 let currentSnake = [2, 1, 0]
